@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load ratings %}
+{% block content %}
+<hr class="mt-5">
+<div class="container" style="background-color:purple; color:aliceblue;">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img class="profile-image" src="{{ project.author.profile.image.url }}" alt="img"
+          style="border-radius: 50%; height:4rem; width:4rem;">
+        <h2 class="account-header mb-2">{{project.author}}</h2>
+      </div>
+      <img src="{{project.image.url}}" class=" mt-2 w-100" alt=""><hr class="mt-5">
+      <a href="{{project.link}}" target="_blank"><input class="btn btn-info mt-3" type="button" value="Visit Site"></a>
+
+    </div>
+
+    <div class="col-md-4">
+      <h1 class="ml-3">Project Title</h1>
+      <hr>
+      <p class="mt-5 ml-5">{{project.title}}
+      <p><br>
+      <h1 class="ml-3">Project Description</h1>
+      <hr>
+      <p class="mt-2"> {{project.description}}</p>
+      <hr>
+      <h4 class="text-info">Posted On: {{project.created_date}}</h4>
+
+    </div>
+     <div class="mt-4 pt-4">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Design Rating</h4>
+                {% ratings project %}
+              </div>
+              <div class="col-md-4">
+                <h4>Usability Rating</h4>
+                {% ratings project %}
+              </div>
+              <div class="col-md-4">
+                <h4>Content Rating</h4>
+                {% ratings project %}
+              </div>
+            </div>
+          </div>
+  </div>
+</div>
+{% endblock %}
